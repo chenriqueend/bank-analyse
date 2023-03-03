@@ -1,0 +1,11 @@
+
+<p-progressSpinner *ngIf="loading"></p-progressSpinner>
+<div *ngIf="!loading">
+    <p class="bg-info text-white">Resultado da consulta : {{id}}</p>
+    <p>{{docsResult?.id}}</p>
+    <p>{{docsResult?.name}}</p>
+    <p>{{docsResult?.result}}</p>
+    <p>{{docsResult?.rules}}</p>    
+
+    <span class="bg-dark text-white" *ngIf="docsResult && docsResult.length == 0"> NAO ENCONTRADO</span>
+</div>
