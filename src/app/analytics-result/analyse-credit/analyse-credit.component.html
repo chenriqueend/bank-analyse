@@ -1,11 +1,155 @@
+<div id="container">
+  <p-message
+    severity="warning"
+    class="font-weight-bold"
+    *ngIf="docsResult && docsResult.length == 0"
+    text="Error 404, Análise não encontrada :("
+  ></p-message>
+  <p-progressSpinner
+    [style]="{ width: '100px', height: '100px' }"
+    *ngIf="loading"
+    strokeWidth="5"
+    styleClass="green-spinner"
+  >
+  </p-progressSpinner>
 
-<p-progressSpinner *ngIf="loading"></p-progressSpinner>
-<div *ngIf="!loading">
-    <p class="bg-info text-white">Resultado da consulta : {{id}}</p>
-    <p>{{docsResult?.id}}</p>
-    <p>{{docsResult?.name}}</p>
-    <p>{{docsResult?.result}}</p>
-    <p>{{docsResult?.rules}}</p>    
+  <div *ngIf="!loading">
+    <div
+      id="card"
+      class="d-grid gap-3"
+      *ngIf="docsResult && docsResult.length != 0"
+    >
+      <div id="analyse">
+        <p *ngIf="docsResult.id == 'companyValidation'">
+          {{ docsResult?.name }}
+        </p>
+        <p *ngIf="docsResult.id == 'boardMemberValidation'">
+          {{ docsResult?.name }}
+        </p>
+        <p *ngIf="docsResult.id == 'boardMemberDocumentsValidation'">
+          {{ docsResult?.name }}
+        </p>
+        <p-tag
+          styleClass="mr-2"
+          severity="danger"
+          [value]="docsResult?.result"
+        ></p-tag>
+      </div>
+      <section>
+        <h5 class="my-2">Motivos do Bloqueio</h5>
+        <p-card
+          *ngFor="let rule of docsResult?.rules['blocked']"
+          id="rulesBlocked"
+          class="d-grid"
+        >
+          <ng-template
+            pTemplate="header"
+            id="blockCard"
+            class="d-flex md:align-items-center"
+          >
+            <div class="d-flex justify-content-between p-4">
+              <div class="col-4">
+                <p>Causa: {{ rule.name }}</p>
+                <p>Descricão: {{ rule.description }}</p>
+              </div>
+              <div class="col-5">
+                <p>Data da análise: {{ rule.executedAt | date : "medium" }}</p>
+                <p-tag
+                  styleClass="mr-2"
+                  severity="danger"
+                  [value]="rule.status"
+                ></p-tag>
+              </div>
+            </div>
+          </ng-template>
 
-    <span class="bg-dark text-white" *ngIf="docsResult && docsResult.length == 0"> NAO ENCONTRADO</span>
+          <h6>Provas</h6>
+          <div class="border border-danger rounded">
+            <p-card class="border-1" *ngFor="let variable of rule.variables">
+              <p>Atributo: {{ variable.attribute }}</p>
+              <p>Motivo: {{ variable.name }}</p>
+              <p>Valor: {{ variable.value }}</p>
+            </p-card>
+          </div>
+        </p-card>
+      </section>
+      <section>
+        <h5 class="my-2">Alertas</h5>
+        <p-card
+          *ngFor="let rule of docsResult?.rules['alerts']"
+          id="rulesBlocked"
+          class="d-grid"
+        >
+          <ng-template
+            pTemplate="header"
+            id="blockCard"
+            class="d-flex md:align-items-center"
+          >
+            <div class="d-flex justify-content-between p-4">
+              <div class="col-4">
+                <p>Causa: {{ rule.name }}</p>
+                <p>Descricão: {{ rule.description }}</p>
+              </div>
+              <div class="col-5">
+                <p>Data da análise: {{ rule.executedAt | date : "medium" }}</p>
+                <p-tag
+                  styleClass="mr-2"
+                  severity="warning"
+                  [value]="rule.status"
+                ></p-tag>
+              </div>
+            </div>
+          </ng-template>
+
+          <h6>Provas</h6>
+          <div class="border border-warning rounded">
+            <p-card class="border-1" *ngFor="let variable of rule.variables">
+              <p>Atributo: {{ variable.attribute }}</p>
+              <p>Motivo: {{ variable.name }}</p>
+              <p>Valor: {{ variable.value }}</p>
+            </p-card>
+          </div>
+        </p-card>
+      </section>
+
+      <section>
+        <h5 class="my-2">Processado</h5>
+        <p-card
+          *ngFor="let rule of docsResult?.rules['proceed']"
+          id="rulesBlocked"
+          class="d-grid"
+        >
+          <ng-template
+            pTemplate="header"
+            id="blockCard"
+            class="d-flex md:align-items-center"
+          >
+            <div class="d-flex justify-content-between p-4">
+              <div class="col-4">
+                <p>Causa: {{ rule.name }}</p>
+                <p>Descricão: {{ rule.description }}</p>
+              </div>
+              <div class="col-5">
+                <p>Data da análise: {{ rule.executedAt | date : "medium" }}</p>
+                <p-tag
+                  styleClass="mr-2"
+                  severity="success"
+                  [value]="rule.status"
+                ></p-tag>
+              </div>
+            </div>
+          </ng-template>
+
+          <h6>Provas</h6>
+          <div class="border border-success rounded">
+            <p-card class="border-1" *ngFor="let variable of rule.variables">
+              <p>Atributo: {{ variable.attribute }}</p>
+              <p>Motivo: {{ variable.name }}</p>
+              <p>Valor: {{ variable.value }}</p>
+            </p-card>
+          </div>
+        </p-card>
+      </section>
+    </div>
+  </div>
 </div>

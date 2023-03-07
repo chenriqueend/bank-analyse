@@ -1,0 +1,56 @@
+#container {
+      margin-top: 5%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+}
+
+#card {
+      width: 80vw;
+}
+
+:host ::ng-deep .green-spinner .p-progress-spinner-circle {
+    animation: green 8s ease-in-out infinite;
+}
+
+p-card{
+      text-align: center;
+      border-radius: 8px;
+}
+
+#analyse {
+      display: flex;
+      justify-content: space-between;
+      padding: 32px 20px 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 8px rgba(0,0,0,.6);
+      font-weight: bolder;
+}
+p-message{
+      width: 480px;
+      height: 240px;
+      padding: 60px;
+}
+p-progressSpinner{
+      margin-top: 13%;
+}
+@keyframes green {
+  100%,
+  0% {
+        stroke: #008744;
+  }
+  40% {
+        stroke: #2fd67a;
+  }
+  66% {
+        stroke: #ffa700;
+  }
+  80%,
+  90% {
+        stroke: #d62d20;
+  }
+}
+
+#rulesBlocked {
+      margin-bottom: 32px;  
+}

@@ -7,6 +7,10 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {ToastModule} from 'primeng/toast';
+import {CardModule} from 'primeng/card';
+import { TagModule } from 'primeng/tag';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     AnalyticsResultRoutingModule,
     InputTextModule,
     ButtonModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    CardModule,
+    ToastModule,
+    TagModule,
+    MessageModule
   ]
 })
 export class AnalyticsResultModule { }

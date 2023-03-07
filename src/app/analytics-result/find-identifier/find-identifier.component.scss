@@ -1,0 +1,59 @@
+#container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    padding-top: 15%;
+}
+
+#searchForm {
+    width: 30%;
+}
+
+::ng-deep {
+    .p-button {
+        background: #2fd67a;
+        background-color: #2fd67a;
+        color: white;
+        border: #2fd67a;
+    }
+
+    .p-button:hover {
+      background: #214749 !important;
+    }
+
+}
+
+#validAnalyses div {display:none;position:relative}
+#validAnalyses:hover div {
+    display:block;
+    position:absolute;
+    top: 38%;
+    margin-left:40px;
+}
+
+#validAnalyses img{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+#info {
+   font-size: smaller;
+   width: auto;
+   height: auto;
+   color:#fff;
+   background:#2fd67a;
+   border-radius:5px;
+   padding:5px;
+   
+}
+
+#info h1 {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 6px 18px 6px;
+}
+
+#info li{
+    padding: 0px 6px 0px;
+}
